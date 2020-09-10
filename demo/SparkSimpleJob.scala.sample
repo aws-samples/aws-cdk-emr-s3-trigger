@@ -1,0 +1,32 @@
+package com.aws.sample
+
+/**
+  * example for word count
+  * This source code is just sample. If you want to build SparkSimpleJob-x.x.x.jar, please refer https://github.com/elbanic/SparkSimpleJob
+  */
+
+object SparkSimpleJob {
+
+  def main (arg: Array[String]): Unit = {
+
+    val spark = SparkSession.builder()
+      .master("local")
+      .appName(getClass.getSimpleName)
+      .getOrCreate()
+
+    val input = arg(0)
+    val output = arg(1)
+
+    wordcount(spark, input, output)
+  }
+
+  def wordcount (spark: SparkSession, input: String, output: String): Unit ={
+    val textfile = spark.sparkContext.textFile(input)
+
+    val counter = textfile.flatMap(line => line.split(" "))
+      .map(word => (word, 1))
+      .reduceByKey(_ + _)
+
+    counter.coalesce(1).saveAsTextFile(output)
+  }
+}
