@@ -1,0 +1,16 @@
+{
+  "config": {
+    "bucket": {
+      "source": "PUT_YOUR_SOURCE_BUCKET_NAME_HERE",
+      "destination": "PUT_YOUR_DESTINATION_BUCKET_NAME_HERE",
+      "job": "PUT_YOUR_JOB_BUCKET_NAME_HERE"
+    },
+    "job": {
+      "file": "SparkSimpleJob-1.0.0.jar"
+    },
+    "deploy": {
+      "version": "1",
+      "environment": "dev"
+    }
+  }
+}
