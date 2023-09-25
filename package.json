@@ -1,5 +1,5 @@
 {
-  "name": "cdk-emr-s3-trigger",
+  "name": "@aws-samples/cdk-emr-s3-trigger",
   "version": "0.1.0",
   "bin": {
     "cdk-emr-s3-trigger": "bin/cdk-emr-s3-trigger.js"
